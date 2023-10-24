@@ -13,27 +13,30 @@
                 <legend>Add to do</legend>
 
                 <label>
-                    Title 
-                    <input type="text">
+                    Title
+                    <input type="text" />
                 </label>
                 <label>
-                    Text 
-                    <input type="text">
+                    Text
+                    <input type="text" />
                 </label>
-                <button>Add</button>
+                <Link href="/">Add</Link>
             </fieldset>
         </form>
     </div>
 </template>
 
 <script>
-    export default {
-      props: {
-        toDos: Array
-      }  
-    }
+import { Link } from "@inertiajs/vue2";
+
+export default {
+    props: {
+        toDos: Array,
+    },
+    components: {
+        Link,
+    },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
