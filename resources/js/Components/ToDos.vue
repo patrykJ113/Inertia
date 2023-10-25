@@ -1,5 +1,5 @@
 <template>
-    <div class="todo">
+    <div class="todos">
         <h2 class="todo__title">To-Do List</h2>
         <TodoForm />
         <TodoList :toDosArr="toDosArr" />
