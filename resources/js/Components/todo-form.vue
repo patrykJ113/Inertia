@@ -1,18 +1,20 @@
 <template>
-    <form>
+    <form @submit.prevent="addToDo">
         <label>
             Title
-            <input v-model="toDo.title" type="text" />
+            <input v-model="toDo.title" type="text" required />
         </label>
         <label>
             Description
-            <input v-model="toDo.description" type="text" />
+            <input v-model="toDo.description" type="text" required />
         </label>
-        <button @click="addToDo">Add</button>
+        <button>Add</button>
     </form>
 </template>
 
 <script>
+import { router } from '@inertiajs/vue2'
+
 export default {
     name: "TodoForm",
     data() {
@@ -23,8 +25,12 @@ export default {
     },
     methods: {
         addToDo() {
-            router.post(this.baseUrl, { ...this.data });
+            // console.log({ ...this.toDo });
+            router.post(this.baseUrl, {...this.toDo});
         },
     },
+    props: {
+        data: Object
+    }
 };
 </script>
