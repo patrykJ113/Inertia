@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ToDo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ToDo;
 
 class ToDoController extends Controller
 {
@@ -14,13 +14,12 @@ class ToDoController extends Controller
     public function index()
     {
 
-        $toDos = ToDo::all();
-
-        // dd($toDos);
+        $todos = ToDo::all();
 
         return Inertia('Home', [
-            'toDoArray' => $toDos
+            'toDoArray' => $todos
         ]);
+        
     }
 
     /**
@@ -36,22 +35,19 @@ class ToDoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all()['toDo']);
-        $valid_toDo = $request->validate([
+        $valid_todo = $request->validate([
             'title' => 'required|max:30',
             'description' => 'max:255',
             'flag' => 'nullable'
         ]);
 
-        ToDo::create($valid_toDo);
-
-        // dd($valid_toDo);
+        ToDo::create($valid_todo);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(ToDo $todo)
     {
         //
     }
@@ -59,7 +55,7 @@ class ToDoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(ToDo $todo)
     {
         //
     }
@@ -67,7 +63,7 @@ class ToDoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, ToDo $todo)
     {
         //
     }
@@ -75,8 +71,8 @@ class ToDoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(ToDo $todo)
     {
-        //
+        $todo->delete();
     }
 }

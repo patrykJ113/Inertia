@@ -5,7 +5,7 @@
                 <h2>{{ toDo.title }}</h2>
                 <p>{{ toDo.description }}</p>
                 <button>Add flag</button>
-                <button>Delete</button>
+                <button @click="deleteToDo(toDo.id)">Delete</button>
             </li>
         </ul>
         <form action="">
@@ -20,7 +20,7 @@
                     Description
                     <input v-model="toDo.description" type="text" />
                 </label>
-                <Link href='/todo' method='post' :data='{ ...toDo }' as='button' >Add</Link>
+                <button @click="addToDo">Add</button>
             </fieldset>
         </form>
     </div>
@@ -28,12 +28,22 @@
 
 <script>
 import { Link } from "@inertiajs/vue2";
+import { useForm, router } from '@inertiajs/vue2'
 
 export default {
     name: 'ToDos',
     data() {
         return {
-            toDo: {}
+            toDo: {},
+            baseUrl: '/todo'
+        }
+    },
+    methods: {
+        addToDo() {
+            router.post(this.baseUrl, {...this.toDo} )
+        },
+        deleteToDo(id) {
+            router.delete(`${this.baseUrl}/${id}`)
         }
     },
     props: {
