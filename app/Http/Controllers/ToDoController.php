@@ -13,8 +13,13 @@ class ToDoController extends Controller
      */
     public function index()
     {
+
+        $toDos = ToDo::all();
+
+        // dd($toDos);
+
         return Inertia('Home', [
-            'toDoArray' => []
+            'toDoArray' => $toDos
         ]);
     }
 

@@ -3,7 +3,7 @@
         <ul v-if="toDosArr.length !== 0">
             <li v-for="toDo in toDosArr" :key="toDo.id">
                 <h2>{{ toDo.title }}</h2>
-                <p>{{ toDo.text }}</p>
+                <p>{{ toDo.description }}</p>
                 <button>Add flag</button>
                 <button>Delete</button>
             </li>
@@ -41,6 +41,6 @@ export default {
     },
     components: {
         Link,
-    },
+    }
 };
 </script>
