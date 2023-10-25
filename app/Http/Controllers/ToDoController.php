@@ -69,6 +69,7 @@ class ToDoController extends Controller
         $valid_todo = $request->validate([
             'title' => 'required|max:30',
             'description' => 'max:255',
+            'completed' => 'boolean',
             'flag' => 'nullable'
         ]);
 
