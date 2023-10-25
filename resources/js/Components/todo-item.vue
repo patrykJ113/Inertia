@@ -7,6 +7,7 @@
         >
             {{ editBtnLabel }}
         </button>
+        <button @click="completeToDo()">Complete</button>
         <button @click="deleteToDo(data.id)">Delete</button>
     </li>
 </template>
@@ -39,7 +40,11 @@ export default {
             this.inputChange = true
         },
         addFlag() {
-            this.data.flag = '1'
+            this.data.flag = true
+            router.put(`${this.baseUrl}/${this.data.id}`, { ...this.data})
+        },
+        completeToDo() {
+            this.data.completed = true
             router.put(`${this.baseUrl}/${this.data.id}`, { ...this.data})
         }
     },
