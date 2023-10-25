@@ -2,7 +2,6 @@
     <li>
         <input v-model="data.title" :readonly="isReadOnly" @input="wasChanged"/>
         <input v-model="data.description" :readonly="isReadOnly" @input="wasChanged"/>
-        <pre>{{ data.title }} | {{ data.description }}</pre>
         <button>Add flag</button>
         <button @click="editToDo(data); togleReadOnly()"
         >
@@ -13,7 +12,7 @@
 </template>
 
 <script>
-import { useForm, router } from '@inertiajs/vue2'
+import { router } from '@inertiajs/vue2'
 
 export default {
     name: "TodoItem",
