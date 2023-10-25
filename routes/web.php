@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ToDoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('todo', ToDoController::class);
 Route::get('/', function () {
-    
-    return Inertia('ToDos', [
-        'toDos' => []
-    ]);
+    return redirect()->action([ToDoController::class, 'index']);
 });
