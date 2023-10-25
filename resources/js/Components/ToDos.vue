@@ -1,13 +1,5 @@
 <template>
     <div>
-        <ul v-if="toDosArr.length !== 0">
-            <li v-for="toDo in toDosArr" :key="toDo.id">
-                <h2>{{ toDo.title }}</h2>
-                <p>{{ toDo.description }}</p>
-                <button>Add flag</button>
-                <button @click="deleteToDo(toDo.id)">Delete</button>
-            </li>
-        </ul>
         <form action="">
             <fieldset>
                 <legend>Add to do</legend>
@@ -23,34 +15,34 @@
                 <button @click="addToDo">Add</button>
             </fieldset>
         </form>
+        <ul v-if="toDosArr.length !== 0">
+            <TodoItem v-for="toDo in toDosArr" :key="toDo.id" :data="toDo" />
+        </ul>
     </div>
 </template>
 
 <script>
-import { Link } from "@inertiajs/vue2";
-import { useForm, router } from '@inertiajs/vue2'
+import TodoItem from "./todo-item.vue";
 
 export default {
-    name: 'ToDos',
+    name: "Todos",
     data() {
         return {
             toDo: {},
-            baseUrl: '/todo'
-        }
+            baseUrl: "/todo",
+        };
     },
     methods: {
         addToDo() {
-            router.post(this.baseUrl, {...this.toDo} )
-        },
-        deleteToDo(id) {
-            router.delete(`${this.baseUrl}/${id}`)
+            router.post(this.baseUrl, { ...this.data });
         }
     },
     props: {
-        toDosArr: Array
+        toDosArr: Array,
     },
     components: {
-        Link,
+        TodoItem
     }
 };
 </script>
+
