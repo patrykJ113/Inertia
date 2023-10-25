@@ -1,48 +1,29 @@
 <template>
-    <div>
-        <form action="">
-            <fieldset>
-                <legend>Add to do</legend>
-
-                <label>
-                    Title
-                    <input v-model="toDo.title" type="text" />
-                </label>
-                <label>
-                    Description
-                    <input v-model="toDo.description" type="text" />
-                </label>
-                <button @click="addToDo">Add</button>
-            </fieldset>
-        </form>
-        <ul v-if="toDosArr.length !== 0">
-            <TodoItem v-for="toDo in toDosArr" :key="toDo.id" :data="toDo" />
-        </ul>
+    <div class="todo">
+        <h2 class="todo__title">To-Do List</h2>
+        <TodoForm />
+        <TodoList :toDosArr="toDosArr"/>
     </div>
 </template>
 
 <script>
-import TodoItem from "./todo-item.vue";
+import "../../css/Components/ToDos.css";
+import TodoForm from "./todo-form.vue";
+import TodoList from "./todo-list.vue";
 
 export default {
-    name: "Todos",
+    name: "ToDos",
     data() {
         return {
-            toDo: {},
             baseUrl: "/todo",
         };
-    },
-    methods: {
-        addToDo() {
-            router.post(this.baseUrl, { ...this.data });
-        }
     },
     props: {
         toDosArr: Array,
     },
     components: {
-        TodoItem
-    }
+        TodoForm,
+        TodoList
+    },
 };
 </script>
-
