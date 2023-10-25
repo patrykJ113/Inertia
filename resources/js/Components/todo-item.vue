@@ -3,12 +3,12 @@
         <input v-model="data.title" :readonly="isReadOnly" @input="wasChanged"/>
         <input v-model="data.description" :readonly="isReadOnly" @input="wasChanged"/>
         <button @click="addFlag" >Add flag</button>
-        <button @click="editToDo(data); togleReadOnly()"
+        <button @click="editToDo(); togleReadOnly()"
         >
             {{ editBtnLabel }}
         </button>
-        <button @click="completeToDo()">Complete</button>
-        <button @click="deleteToDo(data.id)">Delete</button>
+        <button @click="completeToDo">Complete</button>
+        <button @click="deleteToDo">Delete</button>
     </li>
 </template>
 
@@ -25,12 +25,12 @@ export default {
         }
     },
     methods: {
-        deleteToDo(id) {
-            router.delete(`${this.baseUrl}/${id}`)
+        deleteToDo() {
+            router.delete(`${this.baseUrl}/${this.data.id}`)
         },
-        editToDo(data) {
+        editToDo() {
             if(this.inputChange) {
-                router.put(`${this.baseUrl}/${data.id}`, { ...data})
+                router.put(`${this.baseUrl}/${this.data.id}`, { ...this.data})
             } 
         },
         togleReadOnly() {
