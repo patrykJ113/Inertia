@@ -1,7 +1,7 @@
 <template>
     <li>
-        <input v-model="data.title" :readonly="isReadOnly" />
-        <input v-model="data.description" :readonly="isReadOnly" />
+        <input v-model="data.title" :readonly="isReadOnly" @input="wasChanged"/>
+        <input v-model="data.description" :readonly="isReadOnly" @input="wasChanged"/>
         <pre>{{ data.title }} | {{ data.description }}</pre>
         <button>Add flag</button>
         <button @click="editToDo(data); togleReadOnly()"
@@ -20,7 +20,8 @@ export default {
     data() {
         return {
             baseUrl: "/todo",
-            isReadOnly: true
+            isReadOnly: true,
+            inputChange: false 
         }
     },
     methods: {
@@ -28,10 +29,15 @@ export default {
             router.delete(`${this.baseUrl}/${id}`)
         },
         editToDo(data) {
-            router.put(`${this.baseUrl}/${data.id}`, { ...data})
+            if(this.inputChange) {
+                router.put(`${this.baseUrl}/${data.id}`, { ...data})
+            } 
         },
         togleReadOnly() {
             this.isReadOnly = !this.isReadOnly
+        },
+        wasChanged() {
+            this.inputChange = true
         }
     },
     computed: {

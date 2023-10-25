@@ -19,7 +19,7 @@ class ToDoController extends Controller
         return Inertia('Home', [
             'toDoArray' => $todos
         ]);
-        
+
     }
 
     /**
@@ -65,7 +65,14 @@ class ToDoController extends Controller
      */
     public function update(Request $request, ToDo $todo)
     {
-        //
+
+        $valid_todo = $request->validate([
+            'title' => 'required|max:30',
+            'description' => 'max:255',
+            'flag' => 'nullable'
+        ]);
+
+        $todo->update($valid_todo);
     }
 
     /**
