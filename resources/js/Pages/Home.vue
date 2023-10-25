@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import Todos from '../Components/ToDos.vue';
+    import Todos from '../Components/todos.vue';
     export default {
         components: {
             Todos
