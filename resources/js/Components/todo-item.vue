@@ -1,5 +1,5 @@
 <template>
-    <li>
+    <li class=".todo-item">
         <input v-model="data.title" :readonly="isReadOnly" @input="wasChanged"/>
         <input v-model="data.description" :readonly="isReadOnly" @input="wasChanged"/>
         <button @click="addFlag" >Add flag</button>
@@ -14,6 +14,7 @@
 
 <script>
 import { router } from '@inertiajs/vue2'
+import '../../css/Components/todo-item.css'
 
 export default {
     name: "TodoItem",

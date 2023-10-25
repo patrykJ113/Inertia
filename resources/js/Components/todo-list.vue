@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import '../../css/Components/todo-list.css'
 import TodoItem from "./todo-item.vue";
 
 export default {
