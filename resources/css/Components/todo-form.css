@@ -1,5 +1,17 @@
 .todo-form {
+    padding: 10px;
+}
 
+.todo-form__title,
+.todo-form__description {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--orange);
+}
+
+.todo-form__lable {
+    margin-top: 20px;
+    display: block;
 }
 
 .todo-form__title {
@@ -8,4 +20,8 @@
 
 .todo-form__description {
     display: block;
+}
+
+.todo-form__btn {
+
 }

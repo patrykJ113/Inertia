@@ -1,1 +1,39 @@
-.todo-item {}
+.todo-item {
+    display: flex;
+}
+
+.todo-item__title {
+    display: block;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.todo-item__description {
+    resize: none;
+    outline: none;
+}
+
+.todo-item__inputs {
+    border: 1px solid black;
+}
+
+.todo-item__title,
+.todo-item__description {
+    border: none;
+}
+
+.todo-item__edit,
+.todo-item__delete,
+.todo-item__complete,
+.todo-item__flag {
+    background-color: white;
+    border: none;
+}
+
+.todo-item__edit {}
+
+.todo-item__delete {}
+
+.todo-item__complete {}
+
+.todo-item__flag {}
