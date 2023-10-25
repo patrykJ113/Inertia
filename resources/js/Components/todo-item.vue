@@ -2,7 +2,7 @@
     <li>
         <input v-model="data.title" :readonly="isReadOnly" @input="wasChanged"/>
         <input v-model="data.description" :readonly="isReadOnly" @input="wasChanged"/>
-        <button>Add flag</button>
+        <button @click="addFlag" >Add flag</button>
         <button @click="editToDo(data); togleReadOnly()"
         >
             {{ editBtnLabel }}
@@ -37,6 +37,10 @@ export default {
         },
         wasChanged() {
             this.inputChange = true
+        },
+        addFlag() {
+            this.data.flag = '1'
+            router.put(`${this.baseUrl}/${this.data.id}`, { ...this.data})
         }
     },
     computed: {
