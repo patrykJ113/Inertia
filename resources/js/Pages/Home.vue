@@ -1,5 +1,6 @@
 <template>
     <div>   
+        <h1>To do app</h1>
         <ToDos :toDosArr="toDoArray"/>
     </div>
 </template>
