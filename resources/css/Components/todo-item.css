@@ -1,5 +1,9 @@
 .todo-item {
     display: flex;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    background-color: var(--teal-100);
 }
 
 .todo-item__title {
@@ -11,7 +15,7 @@
 .todo-item__description {
     resize: none;
     outline: none;
-    display: none;
+    /* display: none; */
 }
 
 .todo-item__inputs {
@@ -21,12 +25,14 @@
 .todo-item__title,
 .todo-item__description {
     border: none;
+    color: var(--teal-900);
+    background-color: var(--teal-100);
 }
 
 .todo-item__title--complete,
 .todo-item__description--complete {
     text-decoration: line-through;
-    color: #D3D3D3;
+    color: var(--teal-200);
 }
 
 .todo-item__edit,
@@ -37,6 +43,7 @@
     border: none;
     height: 26px;
     width: 26px;
+    background-color: var(--teal-100);
 
     &:hover {
         cursor: pointer;

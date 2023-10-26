@@ -1,13 +1,16 @@
 :root {
-    --orange: #fe5f55;
-    --blue-100: #BDD5EA;
-    --blue-500: #577399;
-    --gray: #495867;
-    --white: #f7f7ff;
-
-    --dark-blue: #23395B;
-}
-
-body {
-    background-color: var(--dark-blue);
+    --teal: #E0F2F1;
+    --teal-100: #B2DFDB;
+    --teal-200: #80CBC4;
+    --teal-300: #4DB6AC;
+    --teal-400: #26A69A;
+    --teal-500: #009688;
+    --teal-600: #00897B;
+    --teal-700: #00796B;
+    --teal-800: #00695C;
+    --teal-900: #004D40;
+    --teal-a-100: #A7FFEB;
+    --teal-a-200: #64FFDA;
+    --teal-a-400: #1DE9B6;
+    --teal-a-700: #00BFA5;
 }

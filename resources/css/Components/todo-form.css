@@ -6,7 +6,6 @@
 .todo-form__description {
     border: none;
     outline: none;
-    border-bottom: 2px solid var(--orange);
 }
 
 .todo-form__lable {
