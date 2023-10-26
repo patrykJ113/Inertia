@@ -15,13 +15,18 @@
 }
 
 .todo-item__inputs {
-    /* border: 1px solid black; */
     flex: 1;
 }
 
 .todo-item__title,
 .todo-item__description {
     border: none;
+}
+
+.todo-item__title--complete,
+.todo-item__description--complete {
+    text-decoration: line-through;
+    color: #D3D3D3;
 }
 
 .todo-item__edit,

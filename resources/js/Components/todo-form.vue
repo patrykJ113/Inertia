@@ -1,20 +1,20 @@
 <template>
     <form @submit.prevent="addToDo" class="todo-form">
-        <label>
+        <label class="todo-form__lable">
             Title
             <input v-model="toDo.title" type="text" required class="todo-form__title"/>
         </label>
-        <label>
+        <label class="todo-form__lable">
             Description
             <input v-model="toDo.description" type="text" required class="todo-form__description"/>
         </label>
-        <button>Add</button>
+        <button class="todo-form__btn">Add</button>
     </form>
 </template>
 
 <script>
 import '../../css/Components/todo-form.css'
-import { router } from '@inertiajs/vue2'
+import { router } from '@inertiajs/vue3'
 
 export default {
     name: "TodoForm",
