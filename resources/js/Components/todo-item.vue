@@ -1,62 +1,77 @@
 <template>
-    <li class=".todo-item">
-        <input v-model="data.title" :readonly="isReadOnly" @input="wasChanged"/>
-        <input v-model="data.description" :readonly="isReadOnly" @input="wasChanged"/>
-        <button @click="addFlag" >Add flag</button>
-        <button @click="editToDo(); togleReadOnly()"
+    <li class="todo-item">
+        <div class="todo-item__inputs">
+            <input
+                class="todo-item__title"
+                v-model="data.title"
+                :readonly="isReadOnly"
+                @input="wasChanged"
+            />
+            <textarea
+                class="todo-item__description"
+                v-model="data.description"
+                :readonly="isReadOnly"
+                @input="wasChanged"
+            >
+            </textarea>
+        </div>
+        <button class="todo-item__flag" @click="addFlag">Add flag</button>
+        <button
+            class="todo-item__edit"
+            @click="
+                editToDo();
+                togleReadOnly();
+            "
         >
             {{ editBtnLabel }}
         </button>
-        <button @click="completeToDo">Complete</button>
-        <button @click="deleteToDo">Delete</button>
+        <button class="todo-item__complete" @click="completeToDo">
+            <Check />
+            Complete
+        </button>
+        <button class="todo-item__delete" @click="deleteToDo">Delete</button>
     </li>
 </template>
 
-<script>
-import { router } from '@inertiajs/vue2'
-import '../../css/Components/todo-item.css'
+<script setup>
+import { router } from "@inertiajs/vue3";
+import "../../css/Components/todo-item.css";
+import Check from "../../svg/check.svg";
+import FlagRegular from "../../svg/flag-regular.svg";
+import FlagSolid from "../../svg/flag-solid.svg";
+import PenToSquare from "../../svg/pen-to-square.svg";
+import X from "../../svg/x.svg";
+import { ref, computed } from "vue";
 
-export default {
-    name: "TodoItem",
-    data() {
-        return {
-            baseUrl: "/todo",
-            isReadOnly: true,
-            inputChange: false 
-        }
-    },
-    methods: {
-        deleteToDo() {
-            router.delete(`${this.baseUrl}/${this.data.id}`)
-        },
-        editToDo() {
-            if(this.inputChange) {
-                router.put(`${this.baseUrl}/${this.data.id}`, { ...this.data})
-            } 
-        },
-        togleReadOnly() {
-            this.isReadOnly = !this.isReadOnly
-        },
-        wasChanged() {
-            this.inputChange = true
-        },
-        addFlag() {
-            this.data.flag = true
-            router.put(`${this.baseUrl}/${this.data.id}`, { ...this.data})
-        },
-        completeToDo() {
-            this.data.completed = true
-            router.put(`${this.baseUrl}/${this.data.id}`, { ...this.data})
-        }
-    },
-    computed: {
-        editBtnLabel() {
-            return this.isReadOnly ? 'Edit' : 'Save'
-        }
-    },
-    props: {
-        data: Object
+const props = defineProps(['data']);
+
+const baseUrl = ref("/todo");
+const isReadOnly = ref(true);
+const inputChange = ref(false);
+
+const editBtnLabel = computed(() => (isReadOnly.value ? "Edit" : "Save"));
+
+function deleteToDo() {
+    router.delete(`${baseUrl.value}/${props.data.id}`);
+}
+
+function editToDo() {
+    if (inputChange.value) {
+        router.put(`${baseUrl.value}/${props.data.id}`, { ...props.data });
     }
-};
+}
+function togleReadOnly() {
+    isReadOnly.value = !isReadOnly.value;
+}
+function wasChanged() {
+    inputChange.value = true;
+}
+function addFlag() {
+    props.data.flag = true;
+    router.put(`${baseUrl.value}/${props.data.id}`, { ...props.data });
+}
+function completeToDo() {
+    props.data.completed = true;
+    router.put(`${baseUrl.value}/${props.data.id}`, { ...props.data });
+}
 </script>
-

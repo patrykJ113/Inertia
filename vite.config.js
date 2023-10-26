@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue2'
+import vue from '@vitejs/plugin-vue'
+import svgLoader from 'vite-svg-loader'
+
 
 export default defineConfig({
     plugins: [
@@ -16,5 +18,6 @@ export default defineConfig({
                 },
             },
         }),
+        svgLoader()
     ],
 });
