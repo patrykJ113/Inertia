@@ -70,7 +70,7 @@ class ToDoController extends Controller
             'title' => 'required|max:30',
             'description' => 'max:255',
             'completed' => 'boolean',
-            'flag' => 'nullable'
+            'flag' => 'boolean'
         ]);
 
         $todo->update($valid_todo);

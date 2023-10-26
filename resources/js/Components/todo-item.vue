@@ -16,7 +16,8 @@
             </textarea>
         </div>
         <button class="todo-item__flag" @click="addFlag">
-            <FlagRegular/>
+            <FlagSolid v-if="data.flag"/>
+            <FlagRegular v-else/>
         </button>
         <button
             class="todo-item__edit"
@@ -71,7 +72,7 @@ function wasChanged() {
     inputChange.value = true;
 }
 function addFlag() {
-    props.data.flag = true;
+    props.data.flag = !props.data.flag;
     router.put(`${baseUrl.value}/${props.data.id}`, { ...props.data });
 }
 function completeToDo() {
