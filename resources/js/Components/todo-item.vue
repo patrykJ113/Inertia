@@ -3,12 +3,14 @@
         <div class="todo-item__inputs">
             <input
                 class="todo-item__title"
+                :class="data.completed ? 'todo-item__title--complete' : ''"
                 v-model="data.title"
                 :readonly="isReadOnly"
                 @input="wasChanged"
-            />
-            <textarea
+                />
+                <textarea
                 class="todo-item__description"
+                :class="data.completed ? 'todo-item__description--complete' : ''"
                 v-model="data.description"
                 :readonly="isReadOnly"
                 @input="wasChanged"
@@ -27,7 +29,6 @@
             "
         >
             <PenToSquare/>
-            <!-- {{ editBtnLabel }} -->
         </button>
         <button class="todo-item__complete" @click="completeToDo">
             <Check />
@@ -76,7 +77,7 @@ function addFlag() {
     router.put(`${baseUrl.value}/${props.data.id}`, { ...props.data });
 }
 function completeToDo() {
-    props.data.completed = true;
+    props.data.completed = !props.data.completed;
     router.put(`${baseUrl.value}/${props.data.id}`, { ...props.data });
 }
 </script>
