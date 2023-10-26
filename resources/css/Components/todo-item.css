@@ -11,10 +11,12 @@
 .todo-item__description {
     resize: none;
     outline: none;
+    display: none;
 }
 
 .todo-item__inputs {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    flex: 1;
 }
 
 .todo-item__title,
@@ -28,6 +30,12 @@
 .todo-item__flag {
     background-color: white;
     border: none;
+    height: 26px;
+    width: 26px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .todo-item__edit {}

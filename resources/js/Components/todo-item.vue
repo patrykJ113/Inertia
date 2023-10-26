@@ -15,7 +15,9 @@
             >
             </textarea>
         </div>
-        <button class="todo-item__flag" @click="addFlag">Add flag</button>
+        <button class="todo-item__flag" @click="addFlag">
+            <FlagRegular/>
+        </button>
         <button
             class="todo-item__edit"
             @click="
@@ -23,13 +25,15 @@
                 togleReadOnly();
             "
         >
-            {{ editBtnLabel }}
+            <PenToSquare/>
+            <!-- {{ editBtnLabel }} -->
         </button>
         <button class="todo-item__complete" @click="completeToDo">
             <Check />
-            Complete
         </button>
-        <button class="todo-item__delete" @click="deleteToDo">Delete</button>
+        <button class="todo-item__delete" @click="deleteToDo">
+            <X/>
+        </button>
     </li>
 </template>
 
