@@ -49,7 +49,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 250ms;
 
     & path {
         fill: var(--teal-900);

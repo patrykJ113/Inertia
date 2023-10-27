@@ -14,7 +14,6 @@
             <textarea
                 v-model="toDo.description"
                 type="text"
-                required
                 class="todo-form__description"
             ></textarea>
         </label>
@@ -40,7 +39,11 @@ export default {
                 method: "post",
                 data: { ...this.toDo },
                 preserveScroll: true,
-                preserveState: true
+                preserveState: true,
+                onSuccess: page => {
+                    this.toDo.title = ''
+                    this.toDo.description = ''
+                }
             });
         },
     },
