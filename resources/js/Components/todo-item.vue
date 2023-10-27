@@ -57,8 +57,6 @@ const baseUrl = ref("/todo");
 const isReadOnly = ref(true);
 const inputChange = ref(false);
 
-const editBtnLabel = computed(() => (isReadOnly.value ? "Edit" : "Save"));
-
 function deleteToDo() {
     router.visit(`${baseUrl.value}/${props.data.id}`, {
         method: "delete",
