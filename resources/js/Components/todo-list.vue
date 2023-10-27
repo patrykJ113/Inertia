@@ -1,11 +1,16 @@
 <template>
-    <ul v-if="toDosArr.length !== 0" class="todo-list">
+    <TransitionGroup
+        name="list"
+        tag="ul"
+        v-if="toDosArr.length !== 0"
+        class="todo-list"
+    >
         <TodoItem v-for="toDo in toDosArr" :key="toDo.id" :data="toDo" />
-    </ul>
+    </TransitionGroup>
 </template>
 
 <script>
-import '../../css/Components/todo-list.css'
+import "../../css/Components/todo-list.css";
 import TodoItem from "./todo-item.vue";
 
 export default {
@@ -14,7 +19,7 @@ export default {
         toDosArr: Array,
     },
     components: {
-        TodoItem
+        TodoItem,
     },
 };
 </script>
