@@ -7,10 +7,12 @@
                 v-model="data.title"
                 :readonly="isReadOnly"
                 @input="wasChanged"
-                />
-                <textarea
+            />
+            <textarea
                 class="todo-item__description"
-                :class="data.completed ? 'todo-item__description--complete' : ''"
+                :class="
+                    data.completed ? 'todo-item__description--complete' : ''
+                "
                 v-model="data.description"
                 :readonly="isReadOnly"
                 @input="wasChanged"
@@ -18,8 +20,8 @@
             </textarea>
         </div>
         <button class="todo-item__flag" @click="addFlag">
-            <FlagSolid v-if="data.flag"/>
-            <FlagRegular v-else/>
+            <FlagSolid v-if="data.flag" />
+            <FlagRegular v-else />
         </button>
         <button
             class="todo-item__edit"
@@ -28,13 +30,13 @@
                 togleReadOnly();
             "
         >
-            <PenToSquare/>
+            <PenToSquare />
         </button>
         <button class="todo-item__complete" @click="completeToDo">
             <Check />
         </button>
         <button class="todo-item__delete" @click="deleteToDo">
-            <X/>
+            <X />
         </button>
     </li>
 </template>
@@ -49,7 +51,7 @@ import PenToSquare from "../../svg/pen-to-square.svg";
 import X from "../../svg/x.svg";
 import { ref, computed } from "vue";
 
-const props = defineProps(['data']);
+const props = defineProps(["data"]);
 
 const baseUrl = ref("/todo");
 const isReadOnly = ref(true);
@@ -58,12 +60,21 @@ const inputChange = ref(false);
 const editBtnLabel = computed(() => (isReadOnly.value ? "Edit" : "Save"));
 
 function deleteToDo() {
-    router.delete(`${baseUrl.value}/${props.data.id}`);
+    router.visit(`${baseUrl.value}/${props.data.id}`, {
+        method: "delete",
+        preserveScroll: true,
+        preserveState: true,
+    });
 }
 
 function editToDo() {
     if (inputChange.value) {
-        router.put(`${baseUrl.value}/${props.data.id}`, { ...props.data });
+        router.visit(`${baseUrl.value}/${props.data.id}`, {
+            method: "put",
+            data: { ...props.data },
+            preserveScroll: true,
+            preserveState: true,
+        });
     }
 }
 function togleReadOnly() {
@@ -74,10 +85,20 @@ function wasChanged() {
 }
 function addFlag() {
     props.data.flag = !props.data.flag;
-    router.put(`${baseUrl.value}/${props.data.id}`, { ...props.data });
+    router.visit(`${baseUrl.value}/${props.data.id}`, {
+        method: "put",
+        data: { ...props.data },
+        preserveScroll: true,
+        preserveState: true,
+    });
 }
 function completeToDo() {
     props.data.completed = !props.data.completed;
-    router.put(`${baseUrl.value}/${props.data.id}`, { ...props.data });
+    router.visit(`${baseUrl.value}/${props.data.id}`, {
+        method: "put",
+        data: { ...props.data },
+        preserveScroll: true,
+        preserveState: true,
+    });
 }
 </script>

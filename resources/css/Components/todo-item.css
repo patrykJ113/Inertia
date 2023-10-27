@@ -9,13 +9,14 @@
 .todo-item__title {
     display: block;
     font-size: 1.2rem;
+    font-weight: 500;
     outline: none;
 }
 
 .todo-item__description {
     resize: none;
     outline: none;
-    display: none;
+    font-weight: 400;
 }
 
 .todo-item__inputs {
@@ -44,9 +45,19 @@
     height: 26px;
     width: 26px;
     background-color: var(--teal-a-100);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 250ms;
+
+    & path {
+        fill: var(--teal-900);
+    }
 
     &:hover {
         cursor: pointer;
+        background-color: var(--teal-300);
     }
 }
 
