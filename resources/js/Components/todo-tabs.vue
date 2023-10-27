@@ -1,16 +1,17 @@
 <template>
     <button @click="comp = 'TodoList'">All</button>
     <button @click="comp = 'TodoFlagged'">Flagged</button>
-    <keep-alive>
+    <Transition name="fade" tag="div" mode="out-in" appear>
         <component :is="comp" />
-    </keep-alive>
+    </Transition>
 </template>
 
 <script>
 import TodoList from "./todo-list.vue";
 import TodoFlagged from "./todo-flagged.vue";
+import '../../css/Components/todo-tabs.css'
 export default {
-    name: 'TodoTabs',
+    name: "TodoTabs",
     data() {
         return {
             baseUrl: "/todo",
