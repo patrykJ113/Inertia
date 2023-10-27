@@ -1,18 +1,25 @@
 <template>
-    <div>   
+    <div>
         <h1>To do app</h1>
-        <Todos :toDosArr="toDoArray"/>
+        <Todos />
     </div>
 </template>
 
 <script>
-    import Todos from '../Components/todos.vue';
-    export default {
-        components: {
-            Todos
-        },
-        props: {
-            toDoArray: Array
-        }
-    }
+import Todos from "../Components/todos.vue";
+import { computed } from "vue";
+
+export default {
+    components: {
+        Todos,
+    },
+    props: {
+        toDoArray: Array,
+    },
+    provide() {
+        return {
+            toDos: computed(() => this.toDoArray),
+        };
+    },
+};
 </script>
