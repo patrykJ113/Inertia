@@ -9,7 +9,7 @@
 <script>
 import TodoList from "./todo-list.vue";
 import TodoFlagged from "./todo-flagged.vue";
-import '../../css/Components/todo-tabs.css'
+import "../../css/Components/todo-tabs.css";
 export default {
     name: "TodoTabs",
     data() {
