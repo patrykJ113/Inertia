@@ -6,7 +6,7 @@
         </label>
         <label class="todo-form__lable">
             Description
-            <input v-model="toDo.description" type="text" required class="todo-form__description"/>
+            <textarea v-model="toDo.description" type="text" required class="todo-form__description"></textarea>
         </label>
         <button class="todo-form__btn">Add</button>
     </form>

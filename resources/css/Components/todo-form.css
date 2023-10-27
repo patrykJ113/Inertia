@@ -1,16 +1,19 @@
-.todo-form {
-    padding: 10px;
-}
+.todo-form {}
 
 .todo-form__title,
 .todo-form__description {
     border: none;
     outline: none;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: var(--teal-a-200);
+    border: 1px solid var(--teal-900);
 }
 
 .todo-form__lable {
-    margin-top: 20px;
+    margin-bottom: 20px;
     display: block;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .todo-form__title {
@@ -22,5 +25,14 @@
 }
 
 .todo-form__btn {
+    background-color: var(--teal-900);
+    border: none;
+    color: var(--teal-a-100);
+    padding: 16px 46px;
+    border-radius: 4px;
+    margin-bottom: 20px;
 
+    &:hover {
+        cursor: pointer;
+    }
 }

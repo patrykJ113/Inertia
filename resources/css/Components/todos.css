@@ -2,9 +2,10 @@
     background-color: white;
     padding: 20px;
     margin: 0 auto;
-    border-radius: 4px;
+    border-radius: 12px;
     max-width: 85%;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    background-color: var(--teal-a-200);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
     
     @media (min-width: 576px) {
         max-width: 70%;
@@ -23,4 +24,9 @@
         max-width: 700px;
     }
 
+}
+
+.todo__title {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--teal-900);
 }
