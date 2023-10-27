@@ -2,7 +2,11 @@
     <div class="todos">
         <h2 class="todo__title">To-Do List</h2>
         <TodoForm />
-        <TodoList :toDosArr="toDosArr" />
+        <button @click="comp = 'TodoList'">All</button>
+        <button @click="comp = 'TodoFlagged'">Flagged</button>
+        <keep-alive>
+            <component :is="comp" />
+        </keep-alive>
     </div>
 </template>
 
@@ -10,20 +14,20 @@
 import "../../css/Components/todos.css";
 import TodoForm from "./todo-form.vue";
 import TodoList from "./todo-list.vue";
+import TodoFlagged from "./todo-flagged.vue";
 
 export default {
     name: "Todos",
     data() {
         return {
             baseUrl: "/todo",
+            comp: 'TodoList'
         };
-    },
-    props: {
-        toDosArr: Array,
     },
     components: {
         TodoForm,
         TodoList,
+        TodoFlagged
     },
 };
 </script>
