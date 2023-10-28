@@ -1,15 +1,17 @@
 <template>
-    <TransitionGroup
-        name="list"
-        tag="ul"
-        v-if="compToDos.length !== 0"
-        class="todo-list"
-    >
-        <TodoItem v-for="toDo in compToDos" :key="toDo.id" :data="toDo" />
-    </TransitionGroup>
-    <div v-else>
-        <h2>{{ noToDosText }}</h2>
-    </div>
+    <Transition name="fade" tag="div" mode="out-in" appear>
+        <TransitionGroup
+            name="list"
+            tag="ul"
+            v-if="compToDos.length !== 0"
+            class="todo-list"
+        >
+            <TodoItem v-for="toDo in compToDos" :key="toDo.id" :data="toDo" />
+        </TransitionGroup>
+        <div v-else>
+            <h2>{{ noToDosText }}</h2>
+        </div>
+    </Transition>
 </template>
 
 <script>
@@ -21,7 +23,7 @@ export default {
     inject: ["toDos"],
     data() {
         return {
-            flagged: false
+            flagged: false,
         };
     },
     components: {
@@ -29,11 +31,13 @@ export default {
     },
     computed: {
         compToDos() {
-            return this.flagged ? this.toDos.filter((toDo) => toDo.flag) : this.toDos;
+            return this.flagged
+                ? this.toDos.filter((toDo) => toDo.flag)
+                : this.toDos;
         },
         noToDosText() {
-            return this.flagged ? `No Flagged To-Do's Yet` : `No To-Do's Yet`
-        }
+            return this.flagged ? `No Flagged To-Do's Yet` : `No To-Do's Yet`;
+        },
     },
 };
 </script>
