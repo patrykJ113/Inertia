@@ -1,4 +1,11 @@
-.todo-form {}
+.todo-form {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 576px) {
+        display: block;
+    }
+}
 
 .todo-form__title,
 .todo-form__description {
@@ -8,6 +15,11 @@
     border-radius: 4px;
     background-color: var(--teal-a-200);
     border: 1px solid var(--teal-900);
+    width: calc(100% - 20px);
+
+    @media (min-width: 576px) {
+        width: 50%;
+    }
 }
 
 .todo-form__lable {
