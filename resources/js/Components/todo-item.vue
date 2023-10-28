@@ -19,25 +19,27 @@
             >
             </textarea>
         </div>
-        <button class="todo-item__flag" @click="addFlag">
-            <FlagSolid v-if="data.flag" />
-            <FlagRegular v-else />
-        </button>
-        <button
-            class="todo-item__edit"
-            @click="
-                editToDo();
-                togleReadOnly();
-            "
-        >
-            <PenToSquare />
-        </button>
-        <button class="todo-item__complete" @click="completeToDo">
-            <Check />
-        </button>
-        <button class="todo-item__delete" @click="deleteToDo">
-            <X />
-        </button>
+        <div class="todo-item-btns">
+            <button class="todo-item__flag" @click="addFlag">
+                <FlagSolid v-if="data.flag" />
+                <FlagRegular v-else />
+            </button>
+            <button
+                class="todo-item__edit"
+                @click="
+                    editToDo();
+                    togleReadOnly();
+                "
+            >
+                <PenToSquare />
+            </button>
+            <button class="todo-item__complete" @click="completeToDo">
+                <Check />
+            </button>
+            <button class="todo-item__delete" @click="deleteToDo">
+                <X />
+            </button>
+        </div>
     </li>
 </template>
 

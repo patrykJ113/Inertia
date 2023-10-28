@@ -1,25 +1,35 @@
 .todo-item {
-    display: flex;
     padding: 10px;
     border-radius: 4px;
     margin-top: 10px;
     background-color: var(--teal-a-100);
+
+    @media (min-width: 375px) {
+        display: flex;
+    }
 }
 
 .todo-item__title {
+    width: 100%;
     display: block;
     font-size: 1.2rem;
     font-weight: 500;
     outline: none;
 }
 
+.todo-item-btns {
+    display: flex;
+}
+
 .todo-item__description {
+    width: 100%;
     resize: none;
     outline: none;
     font-weight: 400;
 }
 
 .todo-item__inputs {
+    overflow-wrap: break-word;
     flex: 1;
 }
 
