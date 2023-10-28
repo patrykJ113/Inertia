@@ -17,6 +17,7 @@
 <script>
 import "../../css/Components/todo-list.css";
 import TodoItem from "./todo-item.vue";
+import useList from "../composables/useList";
 
 export default {
     name: "TodoList",
@@ -27,7 +28,7 @@ export default {
         };
     },
     components: {
-        TodoItem,
+        TodoItem
     },
     computed: {
         compToDos() {
