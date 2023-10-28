@@ -7,6 +7,7 @@
 
 <script>
 import Todos from "../Components/todos.vue";
+import { computed } from "vue";
 
 export default {
     components: {
@@ -15,8 +16,10 @@ export default {
     props: {
         toDoArray: Array,
     },
-    created() {
-        this.$store.commit("setToDos", this.toDoArray);
-    }
+    provide() {
+        return {
+            toDos: computed(() => this.toDoArray),
+        };
+    },
 };
 </script>

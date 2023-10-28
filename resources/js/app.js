@@ -1,6 +1,5 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
-import store from './store/index.js'
 
 createInertiaApp({
   resolve: name => {
@@ -10,7 +9,6 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
-      .use(store)
       .mount(el)
   },
   resolve: name => {
