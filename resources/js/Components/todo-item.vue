@@ -22,7 +22,7 @@
             </textarea>
         </div>
         <div class="todo-item-btns">
-            <button class="todo-item__flag" @click="addFlag">
+            <button class="todo-item__flag" @click="addFlag" title="add flag">
                 <FlagSolid v-if="data.flag" />
                 <FlagRegular v-else />
             </button>
@@ -32,13 +32,14 @@
                     editToDo();
                     togleReadOnly();
                 "
+                title="edit to-do"
             >
                 <PenToSquare />
             </button>
-            <button class="todo-item__complete" @click="completeToDo">
+            <button class="todo-item__complete" @click="completeToDo" title="complete to-do">
                 <Check />
             </button>
-            <button class="todo-item__delete" @click="deleteToDo">
+            <button class="todo-item__delete" @click="deleteToDo" title="delete to-do">
                 <X />
             </button>
         </div>
