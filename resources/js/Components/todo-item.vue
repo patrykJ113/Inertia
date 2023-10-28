@@ -76,8 +76,9 @@ function deleteToDo() {
 
 function updateHeight(key ='') {
     if(key === 'del') {
-        if(txt_ar.value.style.height == '38px') return 
-        txt_ar.value.style.height = `${txt_ar.value.scrollHeight - 11}px`
+        if(parseInt(txt_ar.value.style.height.replace('px', '')) > 30) {
+            txt_ar.value.style.height = `${txt_ar.value.scrollHeight - 12}px`
+        } 
         return 
     }
     txt_ar.value.style.height = `${txt_ar.value.scrollHeight -4}px`
