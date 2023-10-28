@@ -8,6 +8,9 @@
                 required
                 class="todo-form__title"
             />
+            <p class="todo-form__error">
+                {{ $page.props.errors.title }}
+            </p>
         </label>
         <label class="todo-form__lable">
             Description
@@ -15,7 +18,13 @@
                 v-model="toDo.description"
                 type="text"
                 class="todo-form__description"
+                ref="txt_ar"
+                @input="updateHeight()"
+                @keyup.delete="updateHeight('del')"
             ></textarea>
+            <p class="todo-form__error">
+                {{ $page.props.errors.description }}
+            </p>
         </label>
         <button class="todo-form__btn">Add</button>
     </form>
@@ -40,11 +49,20 @@ export default {
                 data: { ...this.toDo },
                 preserveScroll: true,
                 preserveState: true,
-                onSuccess: page => {
-                    this.toDo.title = ''
-                    this.toDo.description = ''
-                }
+                onSuccess: (page) => {
+                    this.toDo.title = "";
+                    this.toDo.description = "";
+                },
             });
+        },
+        updateHeight(key = "") {
+            if (key === "del") {
+                if ( parseInt(this.$refs.txt_ar.style.height.replace("px", "")) > 30) {
+                    this.$refs.txt_ar.style.height = `${this.$refs.txt_ar.scrollHeight - 30}px`;
+                }
+                return;
+            }
+            this.$refs.txt_ar.style.height = `${this.$refs.txt_ar.scrollHeight - 20}px`;
         },
     },
     props: {

@@ -22,6 +22,12 @@
 
 .todo-form__description {
     display: block;
+    overflow: hidden;
+    resize: none;
+}
+
+.todo-form__error {
+    color: #FF1744;
 }
 
 .todo-form__btn {
