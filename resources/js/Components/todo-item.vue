@@ -13,9 +13,11 @@
                 :class="
                     data.completed ? 'todo-item__description--complete' : ''
                 "
+                ref="txt_ar"
                 v-model="data.description"
                 :readonly="isReadOnly"
-                @input="wasChanged"
+                @input="wasChanged(); updateHeight()"
+                @keyup.delete ="updateHeight('del')"
             >
             </textarea>
         </div>
@@ -51,13 +53,18 @@ import FlagRegular from "../../svg/flag-regular.svg";
 import FlagSolid from "../../svg/flag-solid.svg";
 import PenToSquare from "../../svg/pen-to-square.svg";
 import X from "../../svg/x.svg";
-import { ref, computed } from "vue";
+import { ref, onMounted } from "vue";
 
 const props = defineProps(["data"]);
 
 const baseUrl = ref("/todo");
 const isReadOnly = ref(true);
 const inputChange = ref(false);
+const txt_ar = ref(null);
+
+onMounted(() => {
+    updateHeight()
+});
 
 function deleteToDo() {
     router.visit(`${baseUrl.value}/${props.data.id}`, {
@@ -65,6 +72,15 @@ function deleteToDo() {
         preserveScroll: true,
         preserveState: true,
     });
+}
+
+function updateHeight(key ='') {
+    if(key === 'del') {
+        if(txt_ar.value.style.height == '38px') return 
+        txt_ar.value.style.height = `${txt_ar.value.scrollHeight - 11}px`
+        return 
+    }
+    txt_ar.value.style.height = `${txt_ar.value.scrollHeight -4}px`
 }
 
 function editToDo() {

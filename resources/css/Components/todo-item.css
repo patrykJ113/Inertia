@@ -10,11 +10,16 @@
 }
 
 .todo-item__title {
-    width: 100%;
+    width: 90%;
     display: block;
     font-size: 1.2rem;
     font-weight: 500;
     outline: none;
+
+    &:not([readonly]) {
+        border: 1px solid var(--teal-a-700);
+        border-radius: 4px;
+    }
 }
 
 .todo-item-btns {
@@ -22,10 +27,19 @@
 }
 
 .todo-item__description {
-    width: 100%;
+    width: 90%;
     resize: none;
     outline: none;
     font-weight: 400;
+    margin-top: 4px;
+    overflow: hidden;
+
+    &:not([readonly]) {
+        transition: 250ms;
+        border: 1px solid var(--teal-a-700);
+        resize: vertical;
+        border-radius: 4px;
+    }
 }
 
 .todo-item__inputs {

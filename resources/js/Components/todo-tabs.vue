@@ -32,8 +32,7 @@ export default {
         return {
             baseUrl: "/todo",
             comp: "TodoList",
-            allBtnClicked: false,
-            flaggedBtnClicked: false,
+            allBtnClicked: true,
         };
     },
     methods: {
@@ -45,9 +44,6 @@ export default {
                 this.allBtnClicked = false;
                 this.comp = "TodoFlagged";
             }
-            type === "all"
-                ? (this.allBtnClicked = true)
-                : (this.allBtnClicked = false);
         },
     },
     components: {
