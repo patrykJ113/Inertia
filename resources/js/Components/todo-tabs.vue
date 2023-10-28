@@ -1,6 +1,20 @@
 <template>
-    <button @click="comp = 'TodoList'">All</button>
-    <button @click="comp = 'TodoFlagged'">Flagged</button>
+    <div class="todo-tabs__btns">
+        <button
+            class="todo-tabs__btn"
+            :class="allBtnClicked ? 'todo-tabs__btn--avtive' : ''"
+            @click="handelClick('all')"
+        >
+            All
+        </button>
+        <button
+            class="todo-tabs__btn"
+            :class="!allBtnClicked ? 'todo-tabs__btn--avtive' : ''"
+            @click="handelClick()"
+        >
+            Flagged
+        </button>
+    </div>
     <keep-alive>
         <Transition name="fade" tag="div" mode="out-in" appear>
             <component :is="comp" />
@@ -18,7 +32,23 @@ export default {
         return {
             baseUrl: "/todo",
             comp: "TodoList",
+            allBtnClicked: false,
+            flaggedBtnClicked: false,
         };
+    },
+    methods: {
+        handelClick(type = "") {
+            if (type === "all") {
+                this.allBtnClicked = true;
+                this.comp = "TodoList";
+            } else {
+                this.allBtnClicked = false;
+                this.comp = "TodoFlagged";
+            }
+            type === "all"
+                ? (this.allBtnClicked = true)
+                : (this.allBtnClicked = false);
+        },
     },
     components: {
         TodoList,

@@ -1,3 +1,25 @@
+.todo-tabs__btns {
+    text-align: center;
+}
+
+.todo-tabs__btn {
+    background-color: var(--teal-a-200);
+    border: none;
+    cursor: pointer;
+    color: var(--teal-900);
+    padding: 10px 30px;
+    position: relative;
+    &:hover {
+        background-color: var(--teal-a-700);
+    }
+    
+}
+
+.todo-tabs__btn--avtive {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
 .fade-enter-from,
 .fade-leave-to {
     transform: translateX(20px);
